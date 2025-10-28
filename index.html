@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G20 Investment Scheme | 30% in 14 Days</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Shield</text></svg>">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">G20<span style="color:#FCD34D">Invest</span></div>
+    <button class="menu-toggle">Menu</button>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><button id="loginBtn" class="btn-secondary">Login / Register</button></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Earn 30% in 14 Days</h1>
+      <p>Start from <strong>R500</strong>. Powered by <strong>Crypto Mining & Trading</strong>.</p>
+      <p class="tagline">Change your life. Refer friends. Grow together.</p>
+      <button onclick="openRegister()" class="btn-primary">Start Earning Now</button>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="section">
+    <div class="container">
+      <h2>How G20 Works</h2>
+      <div class="steps">
+        <div class="step">
+          <i class="fas fa-user-plus"></i>
+          <h3>1. Register</h3>
+          <p>Get your unique referral code instantly.</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-coins"></i>
+          <h3>2. Invest R500+</h3>
+          <p>Deposit via EFT. We confirm in 24h.</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-chart-line"></i>
+          <h3>3. Earn 30%</h3>
+          <p>Maturity in 14 days. Withdraw or reinvest.</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-users"></i>
+          <h3>4. Refer & Earn</h3>
+          <p>10% of every friend’s investment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="section bg-light">
+    <div class="container">
+      <h2>Investment Packages</h2>
+      <div class="packages-grid">
+        <div class="package-card" data-tier="bronze">
+          <h3>Bronze</h3>
+          <p class="amount">R500 - R4,999</p>
+          <p><strong>30%</strong> in 14 Days</p>
+          <button class="btn-invest" onclick="openRegister()">Invest Now</button>
+        </div>
+        <div class="package-card" data-tier="silver">
+          <h3>Silver</h3>
+          <p class="amount">R5,000 - R19,999</p>
+          <p><strong>30%</strong> + Bonus</p>
+          <button class="btn-invest" onclick="openRegister()">Invest Now</button>
+        </div>
+        <div class="package-card" data-tier="gold">
+          <h3>Gold</h3>
+          <p class="amount">R20,000+</p>
+          <p><strong>30%</strong> + VIP Support</p>
+          <button class="btn-invest" onclick="openRegister()">Invest Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal: Register -->
+  <div id="authModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Register Now</h2>
+      <form id="registerForm">
+        <input type="text" name="fullname" placeholder="Full Name" required />
+        <input type="tel" name="cell" placeholder="Cell Number (e.g. 0821234567)" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="text" name="city" placeholder="City" required />
+        <input type="text" name="refcode" id="refInput" placeholder="Referral Code (Optional)" />
+        <button type="submit">Register & Get Code</button>
+      </form>
+      <p class="login-link">Already registered? <a href="#" id="switchToLogin">Login</a></p>
+    </div>
+  </div>
+
+  <!-- Social Share (After Register) -->
+  <div id="shareSection" class="share-section" style="display:none;">
+    <p>Share your code & change lives:</p>
+    <div class="share-buttons">
+      <a href="#" id="whatsappShare"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" id="facebookShare"><i class="fab fa-facebook"></i></a>
+      <a href="#" id="twitterShare"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" id="telegramShare"><i class="fab fa-telegram"></i></a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G20 Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="dashboard-body">
+
+  <nav class="navbar">
+    <div class="logo">G20<span style="color:#FCD34D">Invest</span></div>
+    <button class="menu-toggle">Menu</button>
+    <ul class="nav-links">
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#deposit">Deposit</a></li>
+      <li><a href="#withdraw">Withdraw</a></li>
+      <li><button id="logoutBtn" class="btn-secondary">Logout</button></li>
+    </ul>
+  </nav>
+
+  <div class="container dashboard-container">
+
+    <h1>Welcome, <span id="userName"></span>!</h1>
+    <p id="joinedDate"></p>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Balance</h3>
+        <p id="balance">R0.00</p>
+      </div>
+      <div class="stat-card">
+        <h3>Pending</h3>
+        <p id="pending">R0.00</p>
+      </div>
+      <div class="stat-card">
+        <h3>Referral Earnings</h3>
+        <p id="referralEarnings">R0.00</p>
+      </div>
+    </div>
+
+    <!-- Investment Timeline -->
+    <div class="timeline">
+      <h3>Investment Status</h3>
+      <div id="investmentStatus">
+        <p><strong>Status:</strong> <span id="statusText">No Active Investment</span></p>
+        <p><strong>Invested On:</strong> <span id="investDate">-</span></p>
+        <p><strong>Matures On:</strong> <span id="matureDate">-</span></p>
+        <p><strong>Expected Return:</strong> <span id="expectedReturn">R0.00</span></p>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="messages">
+      <h3>Notifications</h3>
+      <div id="msgList">
+        <p class="msg">Welcome! Start investing to earn 30% in 14 days.</p>
+      </div>
+    </div>
+
+    <!-- Deposit Form (Google Form) -->
+    <div id="deposit" class="deposit-section">
+      <h3>Make a Deposit</h3>
+      <p>Transfer to: <strong>FNB Acc #123456789</strong> | Ref: <span id="refCodeDisplay"></span></p>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScakF6KRfppXa-LCwQ3uqu2MOBLUBpMjVItGPDhlMtJj45FeA/viewform?usp=dialog" width="100%" height="600" frameborder="0">Loading…</iframe>
+    </div>
+
+    <!-- Withdraw -->
+    <div id="withdraw" class="withdraw-section">
+      <h3>Withdraw Earnings</h3>
+      <p>Minimum: R1000 (after 1 full cycle)</p>
+      <button id="withdrawBtn" class="btn-primary" disabled>Request Withdrawal</button>
+      <p id="withdrawMsg"></p>
+    </div>
+
+    <!-- Referral Share -->
+    <div class="referral-share">
+      <h3>Your Referral Code: <span id="refCodeDisplay2"></span></h3>
+      <p>Share & earn 10% forever:</p>
+      <div class="share-buttons">
+        <a href="#" id="whatsappShare2"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" id="facebookShare2"><i class="fab fa-facebook"></i></a>
+        <a href="#" id="twitterShare2"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Load user & redirect if not logged in
+    const user = JSON.parse(localStorage.getItem('g20user'));
+    if (!user) window.location.href = 'index.html';
+    document.getElementById('userName').textContent = user.fullname.split(' ')[0];
+    document.getElementById('joinedDate').textContent = `Joined: ${new Date(user.joined).toLocaleDateString()}`;
+    document.getElementById('refCodeDisplay').textContent = user.refcode;
+    document.getElementById('refCodeDisplay2').textContent = user.refcode;
+
+    // Share Links
+    const msg = encodeURIComponent(`Join G20 Investment! Start with R500 & earn 30% in 14 days. Use my code: ${user.refcode} → g20invest.co.za`);
+    document.getElementById('whatsappShare2').href = `https://wa.me/?text=${msg}`;
+    document.getElementById('facebookShare2').href = `https://www.facebook.com/sharer/sharer.php?u=g20invest.co.za%3Fref%3D${user.refcode}`;
+    document.getElementById('twitterShare2').href = `https://twitter.com/intent/tweet?text=${msg}`;
+  </script>
+</body>
+</html>
