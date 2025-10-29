@@ -1,6 +1,6 @@
 // EmailJS (Send Confirmation)
 (function(){
-  emailjs.init("service_xo5wjsa"); // Get free at emailjs.com
+  emailjs.init(service_xo5wjsa); // Get free at emailjs.com
 })();
 
 // Register
@@ -55,4 +55,5 @@ document.querySelector('.menu-toggle')?.addEventListener('click', () => {
 document.getElementById('logoutBtn')?.addEventListener('click', () => {
   localStorage.removeItem('g20user');
   window.location.href = 'index.html';
+
 });
